@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #fff6ec;
+  --color-pink: #ffb5c8;
+  --color-pink-deep: #ff7aa2;
+  --color-lilac: #c9b6ff;
+  --color-butter: #ffe27a;
+  --color-mint: #b8f2d0;
+  --color-sky: #a9dcff;
+  --color-ink: #1a1a1a;
+
+  --font-display: "Bricolage Grotesque", system-ui, sans-serif;
+  --font-sans: "DM Sans", system-ui, sans-serif;
+  --font-hand: "Caveat", cursive;
+
+  --shadow-brutal: 4px 4px 0 var(--color-ink);
+  --shadow-brutal-lg: 6px 6px 0 var(--color-ink);
+  --shadow-brutal-sm: 2px 2px 0 var(--color-ink);
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-cream);
+  background-image: radial-gradient(rgb(26 26 26 / 0.09) 1.2px, transparent 1.2px);
+  background-size: 18px 18px;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior: none;
+  overflow-x: hidden;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+@layer components {
+  .brutal-card {
+    background: white;
+    border: 3px solid var(--color-ink);
+    border-radius: 20px;
+    box-shadow: var(--shadow-brutal);
+  }
+
+  .brutal-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border: 3px solid var(--color-ink);
+    border-radius: 16px;
+    box-shadow: var(--shadow-brutal);
+    font-family: var(--font-display);
+    font-weight: 800;
+    transition:
+      transform 120ms ease,
+      box-shadow 120ms ease,
+      background-color 150ms ease;
+  }
+  .brutal-btn:active:not(:disabled) {
+    transform: translate(4px, 4px);
+    box-shadow: 0 0 0 var(--color-ink);
+  }
+  .brutal-btn:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    box-shadow: var(--shadow-brutal-sm);
+  }
+
+  /* contorno de adesivo: branco grosso + linha preta, segue o recorte do PNG */
+  .sticker {
+    filter: drop-shadow(0 0 0 white) drop-shadow(3px 0 0 white) drop-shadow(-3px 0 0 white)
+      drop-shadow(0 3px 0 white) drop-shadow(0 -3px 0 white) drop-shadow(1.5px 0 0 var(--color-ink))
+      drop-shadow(-1.5px 0 0 var(--color-ink)) drop-shadow(0 1.5px 0 var(--color-ink))
+      drop-shadow(0 -1.5px 0 var(--color-ink)) drop-shadow(4px 5px 0 rgb(26 26 26 / 0.85));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
