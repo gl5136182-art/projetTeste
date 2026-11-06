@@ -14,7 +14,7 @@ npm run dev
 
 Salve uma foto de cada em `public/restaurants/` com estes nomes (sem foto, aparece um placeholder colorido):
 
-`coco-bambu.jpg` · `clementina.jpg` · `barolo.jpg` · `santa-chiara.jpg` · `alameda-270.jpg`
+`coco-bambu.jpg` · `clementina.jpg` · `barolo.jpg` · `magnit.jpg` · `antonina.jpg` · `bottega.jpg`
 
 Proporção 4:3, ~1200px de largura.
 

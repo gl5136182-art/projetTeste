@@ -17,53 +17,62 @@ export const RESTAURANTS: Restaurant[] = [
     name: 'Coco Bambu',
     tag: 'frutos do mar',
     description:
-      'O clássico dos camarões: salão enorme, adega caprichada e pratos fartos pra dividir a dois.',
-    dishes: ['Camarão Internacional', 'Camarão Coco Bambu', 'Moqueca Cearense'],
+      'O clássico dos camarões, com pratos fartos pra dividir a dois. E de sobremesa tem cocada ao forno, servida quentinha.',
+    // conferir: cardápio de outras unidades da rede
+    dishes: ['Camarão Coco Bambu', 'Camarão Coco Brasil', 'Carbonara Coco Bambu'],
     color: 'var(--color-sky)',
     emoji: '🦐',
   },
   {
     slug: 'clementina',
     name: 'Clementina Bar e Ristoranti',
-    tag: 'italiano',
+    tag: 'internacional',
     description:
-      'Italiano aconchegante no Plaza Shopping Hotel, com piano ao vivo e vinho em meia garrafa pra brindar sem pressa.',
-    // conferir
-    dishes: ['Massas artesanais', 'Risotos', 'Vinho em meia garrafa'],
+      'Bar e ristorante aconchegante com piano ao vivo, carta caprichada de uísques e pratos internacionais.',
+    // conferir: só recomendações de clientes
+    dishes: ['Tamboril', 'Filé américain', 'Massas'],
     color: 'var(--color-butter)',
-    emoji: '🍝',
+    emoji: '🎹',
   },
   {
     slug: 'barolo',
     name: 'Barolo',
-    tag: 'italiano & internacional',
+    tag: 'italiano',
     description:
-      'Inspirado na tradição italiana e internacional, no Center Shopping. Massas, grelhados e frutos do mar.',
-    // conferir
-    dishes: ['Massas da casa', 'Grelhados', 'Frutos do mar'],
+      'Chamada por clientes de melhor casa de massas da cidade. Tem também buffet de saladas e opção vegana.',
+    dishes: ['Ancho com talharim fresco', 'Rondelli de gorgonzola com castanhas'],
     color: 'var(--color-pink)',
-    emoji: '🍷',
+    emoji: '🍝',
   },
   {
-    slug: 'santa-chiara',
-    name: 'Santa Chiara',
-    tag: 'clima de bistrô',
+    slug: 'magnit',
+    name: 'Magnit Gourmet',
+    tag: 'carnes nobres',
     description:
-      'Queridinho do Santa Mônica, um dos favoritos da cidade. Ambiente gostoso pra conversar a noite toda.',
-    // conferir
-    dishes: ['Prato da casa', 'Massas', 'Sobremesas'],
+      'Premium e romântico: cortes selecionados da Grã-Bretanha e da Argentina, risotos cremosos e até jacaré na brasa.',
+    dishes: ['Magret de pato', 'Picanha da Grã-Bretanha', 'Risoto de trufas negras'],
+    color: 'var(--color-butter)',
+    emoji: '🥩',
+  },
+  {
+    slug: 'antonina',
+    name: 'Antonina Osteria Tartuferia',
+    tag: 'italiano & trufas',
+    description:
+      'Osteria focada em trufas, com menu degustação de três tempos. De sobremesa, tiramisù ou Banoffee Antonina.',
+    dishes: ['Lasanha Al Tartufo', 'Burrata', 'Risoto'],
     color: 'var(--color-mint)',
-    emoji: '🕯️',
+    emoji: '🍄',
   },
   {
-    slug: 'alameda-270',
-    name: 'Alameda 270',
-    tag: 'contemporâneo',
+    slug: 'bottega',
+    name: 'Bottega Ristorante',
+    tag: 'italiano',
     description:
-      'Cozinha simples e sofisticada, ambiente confortável e atendimento elogiado. Perfeito pra uma noite especial.',
-    // conferir (risoto de camarão citado em avaliações)
-    dishes: ['Risoto de camarão', 'Pratos autorais', 'Drinks'],
+      'Cantina italiana aconchegante, perfeita pra dividir uma massa e um vinho sem olhar o relógio.',
+    // conferir
+    dishes: ['Massas frescas', 'Risotos', 'Tiramisù'],
     color: 'var(--color-lilac)',
-    emoji: '🥂',
+    emoji: '🇮🇹',
   },
 ]

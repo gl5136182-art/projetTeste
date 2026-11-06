@@ -10,6 +10,9 @@ const FLAP_H = H * 0.56
 const FLAP_Z = 0.05
 const INK = '#1a1a1a'
 const LINE = 3
+const LETTER_H = H * 0.86
+// altura em que a base da carta fica acima da boca do envelope (H/2), com folga para o contorno
+const LETTER_OUT_Y = H / 2 + LETTER_H / 2 + 0.08
 
 const clamp01 = (x: number) => Math.min(1, Math.max(0, x))
 const easeInOut = (x: number) => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2)
@@ -103,7 +106,7 @@ function EnvelopeModel({ opening, onDone }: { opening: boolean; onDone: () => vo
     flapS.lineTo(0, -FLAP_H)
     flapS.closePath()
 
-    const letterS = rect(W * 0.88, H * 0.86)
+    const letterS = rect(W * 0.88, LETTER_H)
     const seal = new THREE.Shape()
     seal.absarc(0, 0, 0.25, 0, Math.PI * 2, false)
 
@@ -201,18 +204,24 @@ function EnvelopeModel({ opening, onDone }: { opening: boolean; onDone: () => vo
     flap.current.rotation.x = -Math.PI * fp
     flap.current.position.z = fp > 0.5 ? -0.09 : FLAP_Z
 
-    // 3. carta sobe
+    // 3. carta sobe até mostrar o texto
     const lp = easeOutBack(phase(s, 1.0, 1.8))
-    letter.current.position.y = lp * H * 0.78
+    // 3b. termina de sair: a base passa da boca do envelope antes de vir para a frente
+    const ep = easeInOut(phase(s, 1.8, 2.1))
+    letter.current.position.y = lp * H * 0.78 + ep * (LETTER_OUT_Y - H * 0.78)
+    // o envelope desce um pouco para a carta não sair pelo topo da tela
+    const drop = easeInOut(phase(s, 1.0, 2.1)) * 0.6
 
-    // 4. carta vem para a câmera, o envelope desce
-    const zp = easeInOut(phase(s, 1.9, 2.8))
+    // 4. carta (já fora) vem para a câmera, o envelope desce
+    const zp = easeInOut(phase(s, 2.05, 2.95))
     letter.current.position.z = zp * 3.2
-    letter.current.rotation.x = -0.08 * (1 - zp)
-    g.position.y = -zp * 1.6
+    // a carta fica entre a frente e o fundo com só ~0.01 de folga: qualquer inclinação
+    // dentro do envelope faz ela atravessar a frente. Só inclina no ar.
+    letter.current.rotation.x = -0.08 * Math.sin(Math.PI * zp)
+    g.position.y = -drop - zp * 1.6
     camera.position.z = 8 - zp * 1.2
 
-    if (s > 2.75 && !finished.current) {
+    if (s > 2.9 && !finished.current) {
       finished.current = true
       onDone()
     }
