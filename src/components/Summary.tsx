@@ -1,6 +1,6 @@
 import { motion } from 'motion/react'
 import { formatDay } from '../data/dates'
-import { RESTAURANTS } from '../data/restaurants'
+import { placeName } from '../data/restaurants'
 import { BrutalButton, ScreenHeader, Sticker } from './ui'
 
 type Props = {
@@ -15,11 +15,10 @@ type Props = {
 }
 
 export default function Summary({ date, time, restaurant, note, onNote, sending, onBack, onConfirm }: Props) {
-  const r = RESTAURANTS.find((x) => x.slug === restaurant)!
   const rows = [
     { label: 'quando', value: formatDay(date) },
     { label: 'que horas', value: time },
-    { label: 'onde', value: r.name },
+    { label: 'onde', value: placeName(restaurant) },
   ]
 
   return (
@@ -57,7 +56,7 @@ export default function Summary({ date, time, restaurant, note, onNote, sending,
 
       <label className="mt-10 block">
         <span className="font-display text-lg font-extrabold">
-          deixa um recadinho pro JP <span className="font-hand text-xl font-bold text-ink/50">(opcional)</span>
+          deixa um recadinho pra mim<span className="font-hand text-xl font-bold text-ink/50">(opcional)</span>
         </span>
         <textarea
           value={note}

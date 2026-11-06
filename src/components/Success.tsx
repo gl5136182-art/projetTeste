@@ -2,14 +2,14 @@ import confetti from 'canvas-confetti'
 import { motion } from 'motion/react'
 import { useEffect } from 'react'
 import { formatDay } from '../data/dates'
-import { RESTAURANTS } from '../data/restaurants'
+import { SURPRISE, placeName } from '../data/restaurants'
 import { whatsappLink } from '../lib/supabase'
 import { BrutalButton, Heart, Sparkle, Sticker } from './ui'
 
 type Props = { date: string; time: string; restaurant: string; note: string; saved: boolean }
 
 export default function Success({ date, time, restaurant, note, saved }: Props) {
-  const r = RESTAURANTS.find((x) => x.slug === restaurant)!
+  const surprise = restaurant === SURPRISE
 
   useEffect(() => {
     const colors = ['#ffb5c8', '#ff7aa2', '#c9b6ff', '#ffe27a', '#b8f2d0']
@@ -22,11 +22,11 @@ export default function Success({ date, time, restaurant, note, saved }: Props) 
   }, [])
 
   const message = [
-    'JP!! Topei o encontro ♡',
+    'Kingo, topei o encontro ♡',
     '',
     `📅 ${formatDay(date)}`,
     `⏰ ${time}`,
-    `📍 ${r.name}`,
+    surprise ? '📍 me surpreenda! 🤫' : `📍 ${placeName(restaurant)}`,
     ...(note ? ['', `💌 ${note}`] : []),
   ].join('\n')
 
@@ -61,7 +61,7 @@ export default function Success({ date, time, restaurant, note, saved }: Props) 
         tá marcado! ♡
       </motion.h1>
       <p className="mt-2 font-hand text-2xl">
-        {formatDay(date)}, {time}, no {r.name}
+        {formatDay(date)}, {time}, {surprise ? 'num lugar surpresa 🤫' : `no ${placeName(restaurant)}`}
       </p>
 
       <div className="brutal-card mt-8 w-full max-w-sm px-5 py-5" style={{ backgroundColor: 'var(--color-pink)' }}>
@@ -74,7 +74,7 @@ export default function Success({ date, time, restaurant, note, saved }: Props) 
           color="var(--color-mint)"
           onClick={() => window.open(whatsappLink(message), '_blank', 'noopener')}
         >
-          avisar o JP no WhatsApp 💬
+          me avisa no WhatsApp 💬
         </BrutalButton>
       </div>
 

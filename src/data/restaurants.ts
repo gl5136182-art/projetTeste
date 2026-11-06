@@ -76,3 +76,11 @@ export const RESTAURANTS: Restaurant[] = [
     emoji: '🇮🇹',
   },
 ]
+
+// "me surpreenda": a Valen deixa o JP escolher e só descobre no dia
+export const SURPRISE = 'surpresa'
+
+export function placeName(slug: string) {
+  if (slug === SURPRISE) return 'surpresa minha 🤫'
+  return RESTAURANTS.find((r) => r.slug === slug)?.name ?? slug
+}

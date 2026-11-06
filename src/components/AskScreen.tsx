@@ -2,7 +2,7 @@ import { motion } from 'motion/react'
 import { useRef, useState } from 'react'
 import { BrutalButton, Heart, Sticker } from './ui'
 
-const NO_TEXTS = ['não', 'tem certeza?', 'pensa bem…', 'certeza mesmo?', 'o JP vai chorar 😭', 'última chance!', 'desiste 😌']
+const NO_TEXTS = ['não', 'tem certeza?', 'pensa bem…', 'certeza mesmo?', 'eu vou chorar 😭', 'última chance!', 'desiste 😌']
 
 export default function AskScreen({ onYes }: { onYes: (dodges: number) => void }) {
   const [dodges, setDodges] = useState(0)
@@ -57,7 +57,7 @@ export default function AskScreen({ onYes }: { onYes: (dodges: number) => void }
         animate={{ y: 0, opacity: 1, rotate: -1 }}
         transition={{ type: 'spring', delay: 0.35 }}
       >
-        <p className="font-hand text-2xl text-pink-deep">Valen, eu tava pensando...</p>
+        <p className="font-hand text-2xl text-pink-deep">Dona encrenca, eu tava pensando...</p>
         <h1 className="mt-1 font-display text-[2.2rem] leading-[1.05] font-extrabold tracking-tight">
           aceita sair comigo?
         </h1>
